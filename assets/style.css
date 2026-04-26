@@ -1,0 +1,468 @@
+/* ── Imports ─────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* ── Base ────────────────────────────────────────── */
+html, body, [data-testid="stAppViewContainer"] {
+    background: #0a0e1a !important;
+    color: #e8eaf0 !important;
+    font-family: 'DM Sans', sans-serif !important;
+}
+
+[data-testid="stMain"] {
+    background: #0a0e1a !important;
+}
+
+h1, h2, h3 {
+    font-family: 'Syne', sans-serif !important;
+}
+
+/* Hide Streamlit branding */
+#MainMenu, footer, header { visibility: hidden; }
+[data-testid="stToolbar"] { display: none; }
+
+/* ── Hero Header ─────────────────────────────────── */
+.hero-header {
+    text-align: center;
+    padding: 3rem 1rem 1.5rem;
+}
+
+.hero-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 0.3rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.hero-title {
+    font-size: 3.5rem !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    margin: 0 !important;
+    line-height: 1.1 !important;
+}
+
+.hero-title .accent {
+    background: linear-gradient(135deg, #6366f1, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+    color: #6b7280;
+    font-size: 1.1rem;
+    margin-top: 0.75rem;
+    font-weight: 400;
+}
+
+/* ── Step Indicator ──────────────────────────────── */
+.step-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem;
+}
+
+.step-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border: 2px solid #1e2332;
+    background: #1e2332;
+    color: #4b5563;
+    transition: all 0.3s;
+}
+
+.step-item.active .step-circle {
+    border-color: #6366f1;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    box-shadow: 0 0 20px rgba(99,102,241,0.4);
+}
+
+.step-item.done .step-circle {
+    border-color: #22c55e;
+    background: #22c55e;
+    color: white;
+}
+
+.step-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #4b5563;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.step-item.active .step-label { color: #818cf8; }
+.step-item.done .step-label { color: #4ade80; }
+
+/* ── Cards ───────────────────────────────────────── */
+.card {
+    background: #111827;
+    border: 1px solid #1e2332;
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* ── Analysis Screen ─────────────────────────────── */
+.analysis-header {
+    background: linear-gradient(135deg, #111827, #1a1f35);
+    border: 1px solid #1e2332;
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.candidate-info h2 {
+    color: #ffffff !important;
+    font-size: 1.5rem !important;
+    margin: 0 0 0.5rem !important;
+}
+
+.role-badge {
+    background: #1e2332;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    color: #9ca3af;
+    display: inline-block;
+}
+
+.match-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #0a0e1a;
+}
+
+.match-number {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.match-label {
+    font-size: 0.65rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 0.2rem;
+}
+
+/* Skill cards */
+.skill-card {
+    background: #111827;
+    border-radius: 12px;
+    padding: 1.25rem;
+    border-top: 3px solid;
+    min-height: 200px;
+}
+
+.skill-card.matched { border-color: #22c55e; }
+.skill-card.partial { border-color: #f59e0b; }
+.skill-card.missing { border-color: #ef4444; }
+
+.skill-tag {
+    display: inline-block;
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin: 0.2rem;
+}
+
+.matched-tag { background: #052e16; color: #4ade80; }
+.partial-tag { background: #451a03; color: #fbbf24; }
+.missing-tag { background: #450a0a; color: #f87171; }
+
+.summary-box {
+    background: #111827;
+    border-left: 3px solid #6366f1;
+    padding: 1rem 1.5rem;
+    border-radius: 0 12px 12px 0;
+    margin: 1rem 0;
+    color: #9ca3af;
+    font-style: italic;
+}
+
+/* ── Chat / Assessment ───────────────────────────── */
+.assessment-header {
+    background: #111827;
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+}
+
+.assessment-progress {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.assessment-progress span {
+    color: #6b7280;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.assessment-progress strong {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.2rem;
+    color: #a78bfa;
+}
+
+.chat-container {
+    background: #0d1117;
+    border: 1px solid #1e2332;
+    border-radius: 16px;
+    padding: 1.5rem;
+    min-height: 200px;
+    max-height: 400px;
+    overflow-y: auto;
+    margin: 1rem 0;
+}
+
+.chat-bubble {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.chat-bubble.user-bubble {
+    flex-direction: row-reverse;
+}
+
+.bubble-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #1e2332;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.bubble-content {
+    max-width: 75%;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+.ai-bubble .bubble-content {
+    background: #1a1f35;
+    border: 1px solid #2d3748;
+    border-top-left-radius: 2px;
+    color: #e2e8f0;
+}
+
+.user-bubble .bubble-content {
+    background: linear-gradient(135deg, #4338ca, #6366f1);
+    border-top-right-radius: 2px;
+    color: white;
+}
+
+/* ── Results ─────────────────────────────────────── */
+.results-hero {
+    background: linear-gradient(135deg, #111827, #1a1f35);
+    border: 1px solid #1e2332;
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.results-hero h2 {
+    font-size: 2rem !important;
+    color: white !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.results-hero p {
+    color: #9ca3af;
+    margin-bottom: 2rem;
+}
+
+.results-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.stat-number {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #6366f1, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Score cards */
+.score-card {
+    background: #111827;
+    border: 1px solid #1e2332;
+    border-radius: 14px;
+    padding: 1.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.score-skill-name {
+    font-weight: 600;
+    color: #e2e8f0;
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    font-family: 'Syne', sans-serif;
+}
+
+.score-number {
+    font-family: 'Syne', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.score-denom {
+    font-size: 1rem;
+    color: #4b5563;
+}
+
+.score-level {
+    display: inline-block;
+    padding: 0.2rem 0.8rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin: 0.5rem 0;
+}
+
+.score-verdict {
+    font-size: 0.8rem;
+    color: #6b7280;
+    margin-top: 0.5rem;
+    line-height: 1.4;
+}
+
+/* Plan */
+.plan-summary {
+    background: #111827;
+    border: 1px solid #1e2332;
+    border-left: 4px solid #6366f1;
+    border-radius: 0 12px 12px 0;
+    padding: 1.25rem 1.5rem;
+    color: #9ca3af;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.motivation-box {
+    background: linear-gradient(135deg, #0f172a, #1a1f35);
+    border: 1px solid #312e81;
+    border-radius: 14px;
+    padding: 1.5rem 2rem;
+    color: #a5b4fc;
+    text-align: center;
+    font-size: 1rem;
+    font-style: italic;
+    line-height: 1.6;
+    margin: 1.5rem 0;
+}
+
+/* ── Utilities ───────────────────────────────────── */
+.section-gap { height: 1.5rem; }
+
+/* Streamlit overrides */
+.stTextArea textarea {
+    background: #0d1117 !important;
+    color: #e2e8f0 !important;
+    border: 1px solid #1e2332 !important;
+    border-radius: 10px !important;
+}
+
+.stTextArea textarea:focus {
+    border-color: #6366f1 !important;
+    box-shadow: 0 0 0 2px rgba(99,102,241,0.2) !important;
+}
+
+.stTextInput input {
+    background: #0d1117 !important;
+    color: #e2e8f0 !important;
+    border: 1px solid #1e2332 !important;
+}
+
+.stButton > button {
+    background: linear-gradient(135deg, #4338ca, #6366f1) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 10px !important;
+    font-family: 'Syne', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    padding: 0.7rem 1.5rem !important;
+    transition: all 0.2s !important;
+}
+
+.stButton > button:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 8px 25px rgba(99,102,241,0.4) !important;
+}
+
+.stMultiSelect > div {
+    background: #0d1117 !important;
+    border-color: #1e2332 !important;
+}
+
+.stExpander {
+    background: #111827 !important;
+    border: 1px solid #1e2332 !important;
+    border-radius: 12px !important;
+}
+
+.stProgress > div > div {
+    background: linear-gradient(90deg, #6366f1, #a78bfa) !important;
+}
