@@ -149,7 +149,7 @@ Each skill plan includes:
 | Part | Technology | Why |
 |------|-----------|-----|
 | Frontend | Streamlit (Python) | Fast to build, easy to deploy, no HTML/CSS/JS needed |
-| AI Engine | Google Gemini 2.0 Flash | Free tier, high quality, fast responses |
+| AI Engine | Google Gemini 2.5 Flash | Free tier, high quality, fast responses |
 | Language | Python 3.9+ | Simple and widely supported |
 | Hosting | Streamlit Cloud | Free, one-click deploy from GitHub |
 | Styling | Custom CSS | Dark professional theme |
